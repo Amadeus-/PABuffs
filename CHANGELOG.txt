@@ -1,0 +1,70 @@
+------------- Amadeus Updates (2016) -----------------------------------------
+3.00r1
+    * Added "Serrated Edge"
+    * Fixed Tooltips
+
+
+------------- Adelea Updates (2013) -----------------------------------------
+2.03r1 - Added Quantum Sight
+
+2.02r6 - Updated for 2.3 macro event changes
+
+2.02r5 - Prevent menu being made visible if user clicks button in combat state
+
+2.02r4 - Seems that all 4 callings have different ability IDs for Planar Surge
+
+2.02r3 - Added an icon as an alternative method of accessing abilities.
+- Added even more abilities to the popup bar.
+
+2.02r2 - Had wrong data for PA abilities - so some were not found. Fixed!
+- Added /pab size X - to resize icons to X pixels (8-128)
+- Using the mousewheel on the popup bar will also resize
+
+2.02r1 - Initial release
+--------------------------------------------------------------------------------
+
+PABuffs - Popup bar for PA weapon/item buffs
+
+I didnt like having to have 6 slots on a hotbar, or having to open the abilities
+page to cast the PA weapon buffs.
+
+So, I wrote this addon!
+
+PABuffs will put a small icon on your screen (circle, with a hexagon inside).
+
+If the icon is grayscale, then it means it is unlocked and can be dragged around
+to a better location. Once you are happy with the location, RIGHT CLICK on the icon,
+and it will go into colour.
+
+If the icon is in color, then it is locked and cannot be moved (RIGHT CLICK to
+unlock, and it will go grayscale). You can LEFT CLICK the icon, and it will show
+a popup menu listing various abilities (if you have them)
+
+It will have:
+- the 6 planar T2/T3 PA item buffs
+- Ascended Resurrection
+- Call of the Ascended
+- Rescue Medic
+- Planar Protection
+- Planar Surge PA ability
+- Sacrifice Life: Planar Charge PA ability
+- Omen Sight
+
+NOTE: If you have Docker installed, then the icon will go onto the Dock instead.
+
+In addition to the using the button, you can also use a macro containing :
+
+pab toggle
+
+Using the macro will toggle the visibility of the bar. It will popup centered on
+the mouse cursor - or as near to it as it can (if the cursor is too close to the
+edge of the screen it will be moved up/down/left/right as required)
+
+The top row of the bar will have the 6 planar T2/T3 PA item buffs, and the second
+row will have the other abilities listed above.
+
+NOTE: The hotkey bar that the macro is on does NOT have to be enabled or visible.
+
+NOTE2: Due to API limitations on the use of frames with macros, the bar visibility
+status cannot be changed in combat. Because of this, if the bar is visible when
+you enter combat, it will hide itself.
