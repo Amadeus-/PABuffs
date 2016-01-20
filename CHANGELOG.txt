@@ -1,4 +1,7 @@
 ------------- Amadeus Updates (2016) -----------------------------------------
+3.00r2
+    * Added "Lightning Emblem"
+    * Added "Spiked Blade"
 3.00r1
     * Added "Serrated Edge"
     * Fixed Tooltips

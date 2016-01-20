@@ -35,9 +35,11 @@ local PABUFFS_ALL = {
 	["A68F2F2653D74C91E"] = {tier=3, plane=PB_LIFE, loc_name="", en_name="Planar Edge", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = false, ["warrior"] = true}},
 	["A1160463397A685FC"] = {tier=2, plane=PB_DEATH, loc_name="", en_name="Vampiric Essence", calling={["cleric"] = true, ["mage"] = true, ["rogue"] = true, ["warrior"] = true}},
 	["A39981B75A1663426"] = {tier=2, plane=PB_EARTH, loc_name="", en_name="Barbed Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
-	["A4942DECF5173D951"] = {tier=2, plane=PB_EARTH, loc_name="", en_name="Jagged Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
+	["A4942DECF5173D951"] = {tier=3, plane=PB_EARTH, loc_name="", en_name="Jagged Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
+	["A50CE213FDB1EB712"] = {tier=4, plane=PB_EARTH, loc_name="", en_name="Spiked Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A47982EFC17E5221D"] = {tier=2, plane=PB_AIR, loc_name="", en_name="Lightning Glyph", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A0D9451410FBC17E4"] = {tier=3, plane=PB_AIR, loc_name="", en_name="Lightning Sigil", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
+	["A0037C0E5A6EB63A9"] = {tier=4, plane=PB_AIR, loc_name="", en_name="Lightning Emblem", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A58AB00ECB38C9789"] = {tier=2, plane=PB_LIFE, loc_name="", en_name="Baneful Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A172874AF9EE9F18E"] = {tier=3, plane=PB_LIFE, loc_name="", en_name="Ruthless Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A14FAB44096E395F6"] = {tier=2, plane=PB_EARTH, loc_name="", en_name="Shielding Glyph", calling={["cleric"] = false, ["mage"] = true, ["rogue"] = false, ["warrior"] = false}},
@@ -69,12 +71,12 @@ local PASPELLS_OTHER = {
 	["A60203E8E82FC1D26"] = {ix=7, en_name="Quantum Sight"},
 }
 
--- One for each "plane" used
+-- One for each "plane" used  (Be sure to update PB.Rescale() if this container is increased.)
 local PABUFFS_AVL = {
 	0,0,0,0,0,0
 }
 
--- One for each unique 'ix' used
+-- One for each unique 'ix' used (Be sure to update PB.Rescale() if this container is increased.)
 local PASPELLS_AVL = {
 	0,0,0,0,0,0,0
 }
