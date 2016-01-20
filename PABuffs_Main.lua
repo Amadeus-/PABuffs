@@ -14,7 +14,7 @@ local PB_FIRE	=3
 local PB_WATER	=4
 local PB_LIFE	=5
 local PB_DEATH	=6
-local PB_PVP	=8
+local PB_PVP	=7
 
 
 -- In order to retain 'tiering' of abilities, we will assign those abilities in the Steam, Dusk, and Dust planes the same plane assignment
@@ -69,11 +69,12 @@ local PASPELLS_OTHER = {
 	["A60203E8E82FC1D26"] = {ix=7, en_name="Quantum Sight"},
 }
 
-
+-- One for each "plane" used
 local PABUFFS_AVL = {
 	0,0,0,0,0,0
 }
 
+-- One for each unique 'ix' used
 local PASPELLS_AVL = {
 	0,0,0,0,0,0,0
 }
@@ -386,6 +387,7 @@ function PB.BuildUI()
 	PB.UI.f = {}
 	PB.UI.p = {}	
 
+
 	for k,v in pairs(PABUFFS_ALL) do
 		local x = v.plane
 		if PB.UI.f[x] == nil then
@@ -401,7 +403,12 @@ function PB.BuildUI()
 				if (ccr <= 0) then
 					f:SetBackgroundColor(0,1,0,0.5)
 				end 
-				Command.Tooltip(k)
+        		for y,z in pairs(PABUFFS_AVL) do
+        			if z ~= 0 and y == x then
+            			Command.Tooltip(z)
+            			break
+        			end
+        	    end
 			end, "Event.UI.Input.Mouse.Cursor.In")
 			f:EventAttach(Event.UI.Input.Mouse.Cursor.Out, function(self, h)
 				local ccr = PABUFFS_ALL[k].ccr or 0
@@ -457,7 +464,12 @@ function PB.BuildUI()
 				if (ccr <= 0) then
 					f:SetBackgroundColor(0,1,0,0.5)
 				end
-				Command.Tooltip(k)				
+        		for y,z in pairs(PASPELLS_AVL) do
+        			if z ~= 0 and y == x then
+            			Command.Tooltip(z)
+            			break
+        			end
+        	    end
 			end, "Event.UI.Input.Mouse.Cursor.In")
 			f:EventAttach(Event.UI.Input.Mouse.Cursor.Out, function(self, h)
 				local ccr = PASPELLS_OTHER[k].ccr or 0
