@@ -15,9 +15,9 @@ I only intend to update this addon for my own personal use, and make no promises
 3. Open the zip file you downloaded, and click to enter the "PABuffs-master" directory within it.   Copy everything therein to your local "PABuffs" addon directory, overwriting all files.
 
 ####Submit New Abilities
-If you have planar abilities which are not yet included in this addon, you may submit the necessary information by creating an issue here:  https://github.com/Amadeus-/PABuffs/issues     The information needed can be found by typing the following command in your main chat window:  "/PAB list".    This command will print a list of your planar abilities which are not (yet) supported by PABuffs.   (The list is in this format:  "ABILITY_NAME :: ABILITY_ID".)
+If you have planar abilities which are not yet included in this addon, you may submit the necessary information by creating an issue here:  https://github.com/Amadeus-/PABuffs/issues     The information needed can be found by typing the following command in your main chat window:  "/PAB list".    This command will print a list of your planar abilities which are not (yet) supported by PABuffs.   *(The list is in this format:  "ABILITY_NAME :: ABILITY_ID".)*
 
-(NOTE:  To make it easier to copy/paste the ID(s), you may wish to type the command "/log on", then "/PAB list", and then "/log off".   This will save the output of the command to a file in your /Documents/RIFT folder called Log.txt.)
+*(NOTE:  To make it easier to copy/paste the ID(s), you may wish to type the command "/log on", then "/PAB list", and then "/log off".   This will save the output of the command to a file in your /Documents/RIFT folder called Log.txt.)*
 
 For each planar ability that you see listed (which you feel should be included in the addon), the following information will be needed:
 1. The ABILITY_NAME
