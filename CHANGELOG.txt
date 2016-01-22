@@ -1,4 +1,8 @@
 ------------- Amadeus Updates (2016) -----------------------------------------
+3.00r3
+   * Fixed ability: 'Barbed Blade'
+   * Added ability: 'Vengeful Blade'
+   * Added new parameter to the /PAB command, 'list'.   By typing "/PAB list" in the console, one will see a list of planar abilities, which are not yet used/supported by the addon, printed in the main chat window.   (For more information, see the "Submit New Abilities" section of the README.)
 3.00r2
     * Added "Lightning Emblem"
     * Added "Spiked Blade"
