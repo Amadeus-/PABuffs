@@ -16,7 +16,6 @@ local PB_LIFE	=5
 local PB_DEATH	=6
 local PB_PVP	=7
 
-
 -- In order to retain 'tiering' of abilities, we will assign those abilities in the Steam, Dusk, and Dust planes the same plane assignment
 -- as the ability it is replacing.  For example, the Steam ability "Serrated Edge" is replacing the Fire ability "Honed Edge".   So, below,
 -- we will assign it PB_FIRE, but indicate that it is tier 4.
@@ -35,7 +34,7 @@ local PABUFFS_ALL = {
     ["A778CD061789A926E"] = {tier=2, plane=PB_LIFE, loc_name="", en_name="Keen Edge", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = false, ["warrior"] = true}},
 	["A68F2F2653D74C91E"] = {tier=3, plane=PB_LIFE, loc_name="", en_name="Planar Edge", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = false, ["warrior"] = true}},
 	["A1160463397A685FC"] = {tier=2, plane=PB_DEATH, loc_name="", en_name="Vampiric Essence", calling={["cleric"] = true, ["mage"] = true, ["rogue"] = true, ["warrior"] = true}},
-	["A39981B75A1663426"] = {tier=2, plane=PB_EARTH, loc_name="", en_name="Barbed Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
+	["A39981B754FDF6A18"] = {tier=2, plane=PB_EARTH, loc_name="", en_name="Barbed Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A4942DECF5173D951"] = {tier=3, plane=PB_EARTH, loc_name="", en_name="Jagged Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A50CE213FDB1EB712"] = {tier=4, plane=PB_EARTH, loc_name="", en_name="Spiked Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A47982EFC17E5221D"] = {tier=2, plane=PB_AIR, loc_name="", en_name="Lightning Glyph", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
@@ -43,6 +42,7 @@ local PABUFFS_ALL = {
 	["A0037C0E5A6EB63A9"] = {tier=4, plane=PB_AIR, loc_name="", en_name="Lightning Emblem", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A58AB00ECB38C9789"] = {tier=2, plane=PB_LIFE, loc_name="", en_name="Baneful Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A172874AF9EE9F18E"] = {tier=3, plane=PB_LIFE, loc_name="", en_name="Ruthless Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
+	["A3326D66F89026D29"] = {tier=4, plane=PB_LIFE, loc_name="", en_name="Vengeful Blade", calling={["cleric"] = false, ["mage"] = false, ["rogue"] = true, ["warrior"] = false}},
 	["A14FAB44096E395F6"] = {tier=2, plane=PB_EARTH, loc_name="", en_name="Shielding Glyph", calling={["cleric"] = false, ["mage"] = true, ["rogue"] = false, ["warrior"] = false}},
 	["A1834E6A0A95614AE"] = {tier=3, plane=PB_EARTH, loc_name="", en_name="Shielding Sigil", calling={["cleric"] = false, ["mage"] = true, ["rogue"] = false, ["warrior"] = false}},
 	["A4D5E9B6563EEF824"] = {tier=2, plane=PB_AIR, loc_name="", en_name="Thunder Glyph", calling={["cleric"] = false, ["mage"] = true, ["rogue"] = false, ["warrior"] = false}},
@@ -70,6 +70,20 @@ local PASPELLS_OTHER = {
 	["A798550D8AF79AEFC"] = {ix=6, en_name="Sacrifice Life: Planar Charge"},
 	["A563D15783DBB2F8B"] = {ix=7, en_name="Omen Sight"},
 	["A60203E8E82FC1D26"] = {ix=7, en_name="Quantum Sight"},
+}
+
+-- The following planar abilities are not included (and/or used) in this addon
+local PAB_UNUSED = {
+    ["A2C9B070E71703E32"] = {en_name="Major Water Lure"},
+    ["A1057B2DDDA821C08"] = {en_name="Major Death Lure"},
+    ["A251F2E341BED68A3"] = {en_name="Nexus Infusion"},
+    ["A505AAA9B6EB8673D"] = {en_name="Fury of the Ascended"},
+    ["A463FB1568E0634A7"] = {en_name="Major Fire Lure"},
+    ["A32664799B3826CF3"] = {en_name="Major Air Lure"},
+    ["A7B777E34C9D8687B"] = {en_name="Guardian's Flare"},
+    ["A41B2342D48A884FF"] = {en_name="Major Life Lure"},
+    ["A52FCB6B986490E59"] = {en_name="Major Earth Lure"},
+    ["A3101B4CB6385E0A5"] = {en_name="Major Champion"},
 }
 
 -- One for each "plane" used  (Be sure to update PB.Rescale() if this container is increased.)
@@ -594,6 +608,28 @@ function PB.Command_Slash_Register(h, args)
 			else
 				print(sz.." is not a valid size. 8 .. 128")
 			end
+		elseif r[1] == "list" then
+		    local _G = getfenv(0)
+		    local abilList = _G.Inspect.Ability.New.List
+            local abilDetail = _G.Inspect.Ability.New.Detail
+        	local list = abilList()
+        	local details = abilDetail(list)
+        	local unkAbilityFound = false
+        
+        	for k, a in pairs(details) do
+        	    if a.costPlanarCharge then
+        	        if not PABUFFS_ALL[a.idNew] and not PASPELLS_OTHER[a.idNew] and not PAB_UNUSED[a.idNew] then
+            	        if (unkAbilityFound == false) then
+            	            print("[PAB] The following abilities are not (yet) included in this addon:")
+            	            unkAbilityFound = true
+            	        end
+            	        print(string.format("[PAB] %s :: %s", a.name, a.idNew))
+            	    end
+                end
+        	end
+        	if (unkAbilityFound == false) then
+        	    print("[PAB] No unexpected planar abilities found.")
+        	end
 		end
 	end
 end
