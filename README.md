@@ -19,7 +19,7 @@ If you have planar abilities which are not yet included in this addon, you may s
 
 *(NOTE:  To make it easier to copy/paste the ID(s), you may wish to type the command "/log on", then "/PAB list", and then "/log off".   This will save the output of the command to a file in your /Documents/RIFT folder called Log.txt.)*
 
-For each planar ability that you see listed (which you feel should be included in the addon), the following information will be needed:
+For each planar ability that you see listed (which you feel should be included in the addon), the following information will be needed
 1. The ABILITY_NAME
 2. The ABILITY_ID
 3. The name of the ability for which it is an upgrade
