@@ -1,4 +1,12 @@
 ------------- Amadeus Updates (2016) -----------------------------------------
+3.00r4
+   * Added "Primal Edge"
+   * Added "Earthen Spikes"
+   * Added "Storm Emblem"
+   * Added "Flaring Emblem"
+   * Added "Thunder Emblem"
+   * Added "Shimmering Emblem"
+   * Added "Vengeful Shield"
 3.00r3
    * Fixed ability: 'Barbed Blade'
    * Added ability: 'Vengeful Blade'
