@@ -2,9 +2,9 @@ Identifier = "PABuffs"
 Name = "PABuffs"
 Description = "Shows a popup window with your available PA Buffs"
 Author = "adelea@EU-Icewatch"
-Version = "3.00r3"
+Version = "3.00r4"
 Email = "adelea@exyles.com"
-Environment = "3.5"
+Environment = "4.0"
 
 RunOnStartup = {
 	"PABuffs_Main.lua",
